@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>CZR Drum Kit</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <!-- creating a drum kit app; the app should play a sound 
     when you press a corresponding key. The key outline
     changes color as you press the key. -->
-<!-- create a div with the class of 'keys' -->
-<!-- inside of keys create a div with a class of 'key' -->
-<!-- each key has a key code; utilizing data-attributes -->
+  <!-- create a div with the class of 'keys' -->
+  <!-- inside of keys create a div with a class of 'key' -->
+  <!-- each key has a key code; utilizing data-attributes -->
 
   <div class="keys">
     <div data-key="65" class="key">
@@ -62,15 +64,17 @@
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
-<script>
-  // add window event listener function returning an event
-  // test by console logging
-  // add the keycode to the console log with .keyCode
-window.addEventListener('keydown',(e) => {
- console.log(e.keyCode);
-})
-</script>
+  <script>
+    // add window event listener function returning an event
+    // test by console logging
+    // add the keycode to the console log with .keyCode
+    window.addEventListener('keydown', (e) => {
+      const audio = document.querySelector(`audio[data-key='${e.keyCode}']`)
+      console.log(audio);
+    })
+  </script>
 
 
 </body>
+
 </html>
