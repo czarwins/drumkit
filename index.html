@@ -68,13 +68,28 @@
     // add window event listener function returning an event
     // test by console logging
     // add the keycode to the console log with .keyCode
-    window.addEventListener('keydown', (e) => {
+
+    let playSound = (e) => {
       const audio = document.querySelector(`audio[data-key='${e.keyCode}']`);
-      if(!audio) return; // stop the function from running all togehter
+      const key = document.querySelector(`.key[data-key='${e.keyCode}']`);
+      if (!audio) return; // stop the function from running all togehter
       audio.currentTime = 0; //rewind to the start
       audio.play();
+      key.classList.add('playing');
       
-    })
+
+    }
+
+    let removeTransition = (e) => {
+      if(e.propertyName !== 'transform') return; // skips if it's not a transform
+      this.classList.remove('playing');
+      console.log(this);
+    };
+
+    const keys = document.querySelectorAll('.key');
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+    window.addEventListener('keydown', playSound);
+
   </script>
 
 
